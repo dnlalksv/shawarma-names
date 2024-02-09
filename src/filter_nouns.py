@@ -9,9 +9,10 @@ for word in words:
     anas = morph.parse(word)
     for ana in anas:
         tag = ana.tag
-        if tag.POS == 'NOUN' and 'nomn' in tag and 'sing' in tag:
-            nouns.add(word.lower())
+        if (tag.POS in {'NOUN', 'ADJ'}) and 'nomn' in tag and 'sing' in tag:
+            nouns.add(f"\t'{word.lower()}',")
             break
 
-with open('ma_nouns.txt', 'w') as fout:
-    fout.write('\n'.join(nouns))
+new_line = '\n'
+with open('../ma.js', 'w') as fout:
+    fout.write("const NOUNS = [\n" + f"{new_line.join(nouns)}" + '\n]')
