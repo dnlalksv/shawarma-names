@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Random Word Generator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    button {
+        padding: 10px 20px;
+        margin-top: 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+</style>
+<script src="ma.js"></script>
+</head>
+<body>
+    <h1>Как мне назвать шаурмичную? 🥙</h1>
+    <h4 style="color:lightgray">Некоторые названия уже могут быть заняты.</h4>
+    <p id="random-word"></p>
+    <button onclick="generateRandomWord()">Новое название!</button>
+
+    <script>
+        function generateRandomWord() {
+            const randomIndex = Math.floor(Math.random() * NOUNS.length);
+            const randomWord = NOUNS[randomIndex];
+            document.getElementById('random-word').innerText = 'шаур' + randomWord;
+        }
+        
+        generateRandomWord(); // Display a random word when the page loads
+    </script>
+</body>
+</html>
